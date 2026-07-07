@@ -1,6 +1,6 @@
 # <Session topic> — YYYY-MM-DD
 
-**Project:** <repo or path> · **Source:** current session | transcript
+**Project:** <repo or path>
 
 ## The goal this served
 <The real-world mission behind the work — why any of this mattered.>
