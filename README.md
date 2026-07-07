@@ -1,2 +1,41 @@
-# Skills repo.
-This repository is for organizing AI skills I use to further develop myself as a software engineer.
+# Skills repo
+
+Personal Claude Code skills I use to develop myself as a software engineer.
+
+## Skills
+
+### `learning-summary`
+Distills a coding/AI session into deep teaching notes and grows a personal concept
+knowledge base. It surfaces the *concepts beneath the tasks* (used **and** considered),
+writes a standalone lesson per concept (mental model, example, tradeoffs, verified
+resources, retrieval-practice questions), tracks your growth in an index, and commits it.
+
+- **User-invoked** (`/learning-summary`) — deliberate, side-effecting, zero context load.
+- **Output goes to a dedicated lessons repo**, never the current project:
+  `TGubbels/learning-center`, cloned to `~/learning-center` on any machine.
+- Reads the current session by default, or a transcript file you point it at.
+
+## Installing (any machine, incl. WSL)
+
+Via the [`skills`](https://github.com/vercel-labs/skills) CLI — the repo uses the standard
+`skills/<name>/SKILL.md` layout, so no manifest is needed:
+
+```sh
+# one skill, globally, for Claude Code
+npx skills@latest add TGubbels/skills --skill learning-summary --agent claude-code -g
+
+# or every skill in this repo
+npx skills@latest add TGubbels/skills -g
+```
+
+Manual alternative — symlink or copy the folder into your skills dir:
+
+```sh
+ln -s "$PWD/skills/learning-summary" ~/.claude/skills/learning-summary
+```
+
+Supporting files live in `references/` beside `SKILL.md` and travel with the skill on
+install.
+
+On first run the skill clones/pulls `~/learning-center` and commits lessons there — create
+`TGubbels/learning-center` on GitHub so the push has somewhere to land.
