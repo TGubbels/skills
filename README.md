@@ -6,14 +6,18 @@ Personal Claude Code skills I use to develop myself as a software engineer.
 
 ### `learning-summary`
 Distills a coding/AI session into deep teaching notes and grows a personal concept
-knowledge base. It surfaces the *concepts beneath the tasks* (used **and** considered),
-writes a standalone lesson per concept (mental model, example, tradeoffs, verified
-resources, retrieval-practice questions), tracks your growth in an index, and commits it.
+knowledge base. It surfaces the *transferable concepts beneath the tasks* (used **and**
+considered), writes a human-readable standalone lesson per concept (TL;DR, analogy, mental
+model, example, tradeoffs, inline-cited resources, an optional Mermaid diagram, and
+retrieval-practice questions), tracks your growth in an index, and commits it.
 
 - **User-invoked** (`/learning-summary`) — deliberate, side-effecting, zero context load.
 - **Output goes to a dedicated lessons repo**, never the current project:
   `TGubbels/learning-center`, cloned to `~/learning-center` on any machine.
-- Reads the current session by default, or a transcript file you point it at.
+- Reads the current session you're in — no transcript hunting.
+- **Filed by week and category** — concepts live under `concepts/<week>/<category>/` and move
+  to the current week's folder each time they resurface; sessions go under `sessions/<week>/`.
+- One-off, project-specific fixes stay in the session recap rather than becoming concepts.
 
 ## Installing (any machine, incl. WSL)
 
