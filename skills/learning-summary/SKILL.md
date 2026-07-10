@@ -103,8 +103,16 @@ and mark them `(from memory — verify)`.
 For every concept from step 2, place its file at
 `LC_DIR/concepts/$WEEK/<category>/<slug>.md` (loose at `LC_DIR/concepts/$WEEK/<slug>.md` only
 if it has no natural category), built from `references/concept.md`, written so someone could
-learn it cold: the mental model, why it matters, a concrete example tied to *this* session,
-the tradeoffs, verified resources cited inline, and the retrieval-practice questions.
+learn it cold: a one-line TL;DR, an everyday analogy, the mental model, why it matters (with a
+key-insight callout), a concrete example tied to *this* session, the tradeoffs (with a pitfall
+callout), verified resources cited inline, and the retrieval-practice questions. Write for a
+tired human — lead with the plain idea, keep jargon behind the analogy.
+
+**Diagrams — only when the concept is genuinely visual.** If a flow, sequence, structure, or
+before/after would explain it faster than prose, add one **Mermaid** block (GitHub renders it
+as a picture in the browser, no build step, and it stays diffable). If the concept is
+inherently textual (a naming convention, a definition), skip the diagram — don't force one.
+Keep diagrams simple and make sure the syntax is valid.
 
 **Handle recurring concepts by moving them into the current week:**
 
