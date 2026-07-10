@@ -123,9 +123,26 @@ exactly as the user left it — that section is theirs. After a move, fix any in
 the old path in `sessions/` recaps (grep the old relative path and repoint it). The INDEX is
 regenerated wholesale in step 5, so it needs no manual patching.
 
+**Housekeeping pass (every run, not just this session's concepts):** while you're here, tidy
+the existing structure so grouping stays coherent as the KB grows —
+
+- Any concept sitting **loose** directly under a week folder that clearly belongs to a
+  category — especially one that now has two or more members — should be `git mv`d into that
+  `<week>/<category>/` subfolder. Grouping beats loose files whenever a sensible category exists.
+- Keep category slugs consistent: reuse an existing category name rather than coining a
+  near-duplicate (`testing`, not a new `tests`). If you rename or consolidate a category
+  folder, `git mv` every file into the canonical one.
+- Do **not** move a concept to a different *week* here — a concept's week only changes when it
+  actually resurfaces in the current session (the move block above). Housekeeping only fixes
+  grouping *within* the week a file already lives in.
+
+Repoint any inbound links you break with these moves (same grep-and-fix as above); the INDEX
+is regenerated in step 5.
+
 _Done when:_ every concept from step 2 has a file under the current week's folder (moved
-there if it already existed elsewhere), all sections written, resources verified or flagged
-and cited inline, pre-existing user notes intact, and stale inbound links repointed.
+there if it already existed elsewhere), loose concepts that fit a category have been grouped,
+all sections written, resources verified or flagged and cited inline, pre-existing user notes
+intact, and stale inbound links repointed.
 
 ### 4. Recap the session
 
