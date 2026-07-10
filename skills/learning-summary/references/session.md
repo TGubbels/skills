@@ -9,9 +9,10 @@
 <2–4 sentences.>
 
 ## Concepts surfaced
-| Concept | Category | Used / considered | Note |
-|---|---|---|---|
-| [<name>](/concepts/YYYY-Www/<category>/<slug>.md) | <category> | used | <why it came up> |
+| Concept | Category | Used / considered | New / updated | Note |
+|---|---|---|---|---|
+| [<name>](/concepts/YYYY-Www/<category>/<slug>.md) | <category> | used | new | <why it came up> |
+| [<name>](/concepts/YYYY-Www/<category>/<slug>.md) | <category> | considered | updated | <what this session added to an existing lesson> |
 
 ## Codebase-specific learnings
 _Fixes and details that are specific to this project and don't warrant a standalone

@@ -159,8 +159,15 @@ goal the session served, what it was about, the concepts surfaced (each linking 
 concept file), the **codebase-specific learnings** that didn't warrant a concept, key
 decisions, and what to study next. Use the environment's current date.
 
+In the **Concepts surfaced** table, mark each concept **new** or **updated** in the
+`New / updated` column — you already know which from step 3: a concept whose file you created
+fresh this run is **new**, one that already existed and was moved/merged into the current week
+is **updated**. For an updated concept, let the Note say what this session added to the
+existing lesson.
+
 _Done when:_ the recap exists under the current week's folder, links to every concept file
-from step 3, and captures the project-specific learnings routed here in step 2.
+from step 3, tags each concept new or updated, and captures the project-specific learnings
+routed here in step 2.
 
 ### 5. Update the index
 
