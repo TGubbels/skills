@@ -9,9 +9,15 @@
 <2–4 sentences.>
 
 ## Concepts surfaced
-| Concept | Used / considered | Note |
-|---|---|---|
-| [<name>](../concepts/<slug>.md) | used | <why it came up> |
+| Concept | Category | Used / considered | Note |
+|---|---|---|---|
+| [<name>](/concepts/YYYY-Www/<category>/<slug>.md) | <category> | used | <why it came up> |
+
+## Codebase-specific learnings
+_Fixes and details that are specific to this project and don't warrant a standalone
+concept — the kind of thing you'd otherwise forget. No concept file for these._
+- <the specific bug/quirk/fix and the takeaway, e.g. "the auth middleware runs before
+  body-parsing, so `req.body` is undefined in the guard — reorder if you need it there">
 
 ## Key decisions
 - <decision and the reasoning behind it>
