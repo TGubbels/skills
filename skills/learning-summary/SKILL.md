@@ -20,7 +20,10 @@ Two principles from good teaching shape the output:
 
 All output goes to **one dedicated repo, never the current project**:
 
-- **LC_DIR** = `$HOME/learning-center` (works on WSL, Linux, Mac, and Windows/Git-Bash).
+- **LC_DIR** — the local clone of the lessons repo. It is **not** hardcoded to home;
+  resolve it at the start of every run (see step 1). It comes from the
+  `LEARNING_CENTER_DIR` environment variable, and only falls back to
+  `$HOME/learning-center` when that variable is unset.
 - **LC_REMOTE** = `https://github.com/TGubbels/learning-center.git`
 
 ```
@@ -42,17 +45,32 @@ before writing so structure stays consistent across machines and runs.
 
 ## Steps
 
-### 1. Sync the lessons repo
+### 1. Resolve LC_DIR, then sync the lessons repo
 
-Use the Bash tool (cross-platform). Ensure `LC_DIR` exists and is current:
+Use the Bash tool (cross-platform). **First resolve where the lessons repo lives** — it is
+never assumed to be under home:
+
+- If the `LEARNING_CENTER_DIR` environment variable is set, use it verbatim as `LC_DIR` and
+  say nothing.
+- If it is **unset**, ask the user where their learning-center repo is (or should be),
+  offering `$HOME/learning-center` as the default they can accept with enter. Use their
+  answer as `LC_DIR` for the rest of the run. Mention once that setting
+  `LEARNING_CENTER_DIR` in their shell profile skips this prompt next time.
+
+Confirm the variable and check whether it is set with the Bash tool, e.g.
+`echo "${LEARNING_CENTER_DIR:-<unset>}"`, before deciding whether to ask.
+
+Then, with `LC_DIR` set to the resolved path, ensure it exists and is current (do **not**
+reintroduce a hardcoded `$HOME` path — use `"$LC_DIR"` throughout):
 
 ```
-if [ -d "$HOME/learning-center/.git" ]; then
-  git -C "$HOME/learning-center" pull --ff-only
+LC_DIR="<resolved path>"
+if [ -d "$LC_DIR/.git" ]; then
+  git -C "$LC_DIR" pull --ff-only
 else
-  git clone https://github.com/TGubbels/learning-center.git "$HOME/learning-center" \
-    || { mkdir -p "$HOME/learning-center" && git -C "$HOME/learning-center" init \
-         && git -C "$HOME/learning-center" remote add origin https://github.com/TGubbels/learning-center.git; }
+  git clone https://github.com/TGubbels/learning-center.git "$LC_DIR" \
+    || { mkdir -p "$LC_DIR" && git -C "$LC_DIR" init \
+         && git -C "$LC_DIR" remote add origin https://github.com/TGubbels/learning-center.git; }
 fi
 ```
 
@@ -62,8 +80,8 @@ tell the user to create `TGubbels/learning-center` on GitHub so the final push l
 Compute the current week once and reuse it throughout: `WEEK=$(date +%G-W%V)` (e.g.
 `2026-W28`). Use the environment's current date for session filenames.
 
-_Done when:_ `LC_DIR` exists as a git repo and, if it had a remote, is pulled up to date, and
-you have `WEEK`.
+_Done when:_ `LC_DIR` is resolved (from `LEARNING_CENTER_DIR` or the user's answer), exists as
+a git repo and, if it had a remote, is pulled up to date, and you have `WEEK`.
 
 ### 2. Surface the concepts
 
@@ -117,11 +135,11 @@ Keep diagrams simple and make sure the syntax is valid.
 **Handle recurring concepts by moving them into the current week:**
 
 ```
-existing=$(find "$HOME/learning-center/concepts" -name "<slug>.md" 2>/dev/null | head -1)
-target="$HOME/learning-center/concepts/$WEEK/<category>/<slug>.md"
+existing=$(find "$LC_DIR/concepts" -name "<slug>.md" 2>/dev/null | head -1)
+target="$LC_DIR/concepts/$WEEK/<category>/<slug>.md"
 if [ -n "$existing" ] && [ "$existing" != "$target" ]; then
   mkdir -p "$(dirname "$target")"
-  git -C "$HOME/learning-center" mv "$existing" "$target"
+  git -C "$LC_DIR" mv "$existing" "$target"
 fi
 ```
 
@@ -186,8 +204,8 @@ Always commit so the work is saved, but **never push without the user's confirma
 they review the generated files first.
 
 ```
-git -C "$HOME/learning-center" add -A
-git -C "$HOME/learning-center" commit -m "learning: <topic> — <n> concepts"
+git -C "$LC_DIR" add -A
+git -C "$LC_DIR" commit -m "learning: <topic> — <n> concepts"
 ```
 
 Then report what was filed — concepts (new vs. recurring, and any that moved week/category),
@@ -195,7 +213,7 @@ the session recap path, and the top suggested next study item — point the user
 review, and **ask whether to push**. Only after they confirm:
 
 ```
-git -C "$HOME/learning-center" push 2>/dev/null || echo "push skipped (no remote / not authed)"
+git -C "$LC_DIR" push 2>/dev/null || echo "push skipped (no remote / not authed)"
 ```
 
 If they decline, leave the commit in place and tell them they can push later (or re-run and
