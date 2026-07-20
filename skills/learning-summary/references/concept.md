@@ -1,6 +1,15 @@
-# <Concept name>
+---
+name: <Concept name>
+slug: <slug>
+category: <category>
+status: used | considered   # most recent appearance
+first_seen: YYYY-MM-DD
+last_seen: YYYY-MM-DD
+times: 1
+weeks: [YYYY-Www]           # every week this concept was touched
+---
 
-**Slug:** `<slug>` · **Category:** `<category>` · **Status:** used | considered
+# <Concept name>
 
 > **TL;DR:** <one sentence a tired human could read and get the gist.>
 
@@ -28,7 +37,8 @@ flowchart LR
 > **Key insight:** <the one thing to remember if you forget everything else.>
 
 ## Example
-<A concrete example — code or scenario. Tie it to the session it came from so it sticks.>
+<A concrete example — code or scenario. This is where a codebase-specific detail belongs:
+tie the concept to the session it came from so it sticks.>
 
 ## Tradeoffs & pitfalls
 <Alternatives and when NOT to use it. Put the sharpest warning in a callout:>
@@ -40,16 +50,12 @@ flowchart LR
 [1]: <url> "<title> — one line on why this one"
 
 ## Recall prompts
-_Answer these from memory later — retrieval beats rereading._
+_Answer these from memory later — retrieval beats rereading. These feed the weekly
+`review/<week>.md` file._
 1. <question that forces the core mental model>
 2. <question about when to use / when NOT to>
 3. <question tying it to a concrete situation>
 
 ## Session appearances
-- YYYY-MM-DD — [<session>](/sessions/YYYY-Www/YYYY-MM-DD-<topic>.md): <what happened with it>
-
-## My notes & links
-_Yours to fill in — the skill leaves this untouched._
-- [ ] Read the linked resources
-- [ ] Try it in a real task
-- [ ] Link my own notes here:
+_One terse line per appearance — date, session link, what happened. Keep it short._
+- YYYY-MM-DD — [<session>](../../sessions/YYYY-Www/YYYY-MM-DD-<topic>.md): <one line>

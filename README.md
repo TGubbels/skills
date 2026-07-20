@@ -7,17 +7,23 @@ Personal Claude Code skills I use to develop myself as a software engineer.
 ### `learning-summary`
 Distills a coding/AI session into deep teaching notes and grows a personal concept
 knowledge base. It surfaces the *transferable concepts beneath the tasks* (used **and**
-considered), writes a human-readable standalone lesson per concept (TL;DR, analogy, mental
-model, example, tradeoffs, inline-cited resources, an optional Mermaid diagram, and
-retrieval-practice questions), tracks your growth in an index, and commits it.
+considered), writes a concise, human-readable standalone lesson per concept (TL;DR, analogy,
+mental model, example, tradeoffs, inline-cited resources, an optional Mermaid diagram, and
+retrieval-practice questions), builds a weekly review file to study from, tracks your growth
+in an index, and commits it.
 
 - **User-invoked** (`/learning-summary`) — deliberate, side-effecting, zero context load.
 - **Output goes to a dedicated lessons repo**, never the current project:
   `TGubbels/learning-center`, cloned to `~/learning-center` on any machine.
 - Reads the current session you're in — no transcript hunting.
-- **Filed by week and category** — concepts live under `concepts/<week>/<category>/` and move
-  to the current week's folder each time they resurface; sessions go under `sessions/<week>/`.
-- One-off, project-specific fixes stay in the session recap rather than becoming concepts.
+- **Concepts filed by category on a stable path** — `concepts/<category>/<slug>.md`, never
+  moved; the week(s) a concept was touched live in its YAML frontmatter. Sessions and review
+  files are filed by week (`sessions/<week>/`, `review/<week>.md`).
+- **Study loop** — each week gets a `review/<week>.md` of that week's recall questions with
+  collapsed answers, sized for a 5–10 minute retrieval burst.
+- **No quota** — a session with nothing genuinely transferable produces nothing.
+- Codebase-specific details live as a concept's *Example*, not a standing reread-list; the
+  rare project fact worth remembering gets one line in the session recap.
 
 ## Installing (any machine, incl. WSL)
 
